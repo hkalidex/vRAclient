@@ -33,7 +33,7 @@ setup(
     packages=[
         'vRAclient'
     ],
-    url='https://github.intel.com/ase-internal/vRAclient',
+    url='https://github.com/hkalidex/vRAclient',
     description='A Python client for vRA REST API',
     install_requires=requires,
     dependency_links=links
