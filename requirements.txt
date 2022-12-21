@@ -1,0 +1,2 @@
+retrying
+-e git+https://github.intel.com/ase-internal/RESTclient.git@master#egg=RESTclient
