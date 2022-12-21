@@ -5,4 +5,4 @@ unittest-xml-reporting
 mccabe
 mock
 radon
-git+https://github.intel.com/ase-internal/RESTclient.git@master#egg=RESTclient
+git+https://github.com/hkalidex/RESTclient.git#egg=RESTclient
