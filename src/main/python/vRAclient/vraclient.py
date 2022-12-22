@@ -67,7 +67,7 @@ def get_bearer_token(hostname, username, password, tenant):
             },
             verify=RESTclient.cabundle)
 
-        return response.json()['id']
+        return response.json()['token']
 
     except Exception as exception:
         logger.error('error occurred obtaining bearer token from {} - {}'.format(endpoint, str(exception)))
