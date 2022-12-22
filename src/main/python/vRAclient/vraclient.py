@@ -50,7 +50,7 @@ class NoPermission(Exception):
 def get_bearer_token(hostname, username, password, tenant):
     """ return bearer token for vRA
     """
-    endpoint = 'https://{}/identity/api/tokens'.format(hostname)
+    endpoint = 'https://{}/iaas/api/login'.format(hostname)
     logger.debug('obtaining bearer token from {}'.format(endpoint))
 
     try:
