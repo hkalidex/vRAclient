@@ -67,7 +67,7 @@ def get_bearer_token(hostname, username, password, tenant):
             },
             verify=RESTclient.cabundle)
 
-        refreshtoken = response.json()['refreshToken']
+        refreshtoken = response.json()['refresh_token']
         endpoint2 =  'https://{}/iaas/api/login'.format(hostname)
         data = {
                "refreshToken": refreshtoken }
