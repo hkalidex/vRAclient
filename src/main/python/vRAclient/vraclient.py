@@ -78,7 +78,7 @@ def get_bearer_token(hostname, username, password, tenant):
             headers={
                   'Content-Type': 'application/json'
                  },
-            verify= '/etc/ssl/certs/cabundle.pem')
+            verify=RESTclient.cabundle)
         access_token =  "Bearer " + response1.json()['token']
         return   access_token
 
