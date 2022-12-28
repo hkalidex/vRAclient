@@ -303,7 +303,7 @@ class vRAclient(RESTclient):
          }
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle').json()['content']
         return api_output
-
+                                      
     def extend_lease_action(self, server_name=None, days=180, wait_for_request=True):
         """ extend lease by days for server_name
 
