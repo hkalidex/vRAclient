@@ -282,7 +282,7 @@ class vRAclient(RESTclient):
             NOTE: As of release 7.2 use Identity Service https://{{hostname}}/identity/api/tenants/{tenantId}/subtenants
             The endpoint below has been deprecated. However, currently don't have access to consume the identity endpoint above.
         """
-        endpoint = '/reservation-service/api/reservations/subtenants'
+        endpoint = '/iaas/api/projects'
         orderby = 'orderby=id'
         # NOTE: paging is not supported for this endpoint for some reason
         # only way to get all data is set a large limit
