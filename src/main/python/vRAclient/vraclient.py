@@ -67,7 +67,21 @@ def get_bearer_token(hostname, username, password, tenant):
             },
             verify=RESTclient.cabundle)
 
-        return response.json()['refreshToken']
+        refreshtoken = response.json()['refreshToken']
+        endpoint2 =  'https://{}/iaas/api/login'.format(hostname)
+        data = {
+               "refreshToken": refreshtoken }
+        
+        response1 = requests.post(
+            endpoint2,
+            data =json.dumps( data )  ,
+            headers={
+                  'Content-Type': 'application/json'
+                 },
+            verify= '/etc/ssl/certs/cabundle.pem')
+        access_token =  "Bearer " + response1.json()['token']
+        return   access_token
+
 
     except Exception as exception:
         logger.error('error occurred obtaining bearer token from {} - {}'.format(endpoint, str(exception)))
