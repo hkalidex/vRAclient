@@ -295,6 +295,14 @@ class vRAclient(RESTclient):
             result.extend(data)
         logger.debug('retrieved total of {} subtenants from "{}"'.format(len(result), api_endpoint))
         return result
+    def get_subtenants_new(access_token):
+        url = 'https://{}/iaas/api/projects'.format(hostname)
+        headers = {
+                'accept': "application/json",
+                'authorization': access_token
+         }
+        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle').json()['content']
+        return api_output
 
     def extend_lease_action(self, server_name=None, days=180, wait_for_request=True):
         """ extend lease by days for server_name
