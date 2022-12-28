@@ -16,7 +16,7 @@ logging.getLogger('urllib3.connectionpool').setLevel(logging.CRITICAL)
 VRA_HOST = 'vradev.fms07vraapp101.fm.intel.com'
 VRA_TENANT = 'VRADEV'
 
-def get_subtenants(access_token):
+def get_subtenants_new(access_token):
 url = 'https://{}/iaas/api/projects'.format(hostname)
 
 
