@@ -312,7 +312,7 @@ class vRAclient(RESTclient):
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
         return api_output
     def get_reservations_new_details(self, access_token, hostname ,ID):
-        url = 'https://{}/policy/api/policies/ID'.format(ID)
+        url = 'https://{}/policy/api/policies/{ID}'.format(hostname)
         headers = {
                 'accept': "application/json",
                 'authorization': access_token
