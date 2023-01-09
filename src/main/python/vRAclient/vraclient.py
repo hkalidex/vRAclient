@@ -341,7 +341,7 @@ class vRAclient(RESTclient):
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()
         return api_output
     
-     def get_vmdetails(self, access_token, hostname ):
+    def get_vmdetails(self, access_token, hostname ):
         url = 'https://{}/iaas/api/machines?filter=name .format(hostname)
         headers = {
                 'accept': "application/json",
