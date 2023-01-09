@@ -274,6 +274,24 @@ class vRAclient(RESTclient):
             result.extend(data)
         logger.debug('retrieved total of {} resources from "{}"'.format(len(result), deployments_url))
         return result
+    
+    def get_resources_deploymentsapi_new(self, access_token, hostname):
+        url = "https://{}/deployment/api/deployments".format(hostname)
+        headers = {
+                'accept': 'application/json',
+                'authorization': access_token
+        }
+        api_output = requests.request("GET", url, headers=headers, verify=RESTclient.cabundle).json()['content']
+        return api_output
+
+    def get_resources_deploymentsapi_details_new(self, access_token, hostname, ID):
+        url = "https://{}/deployment/api/deployments".format(hostname, ID)
+        headers = {
+                'accept': 'application/json',
+                'authorization': access_token
+        }
+        api_output = requests.request("GET", url, headers=headers, verify=RESTclient.cabundle).json()['content']
+        return api_output
 
     def get_reservations(self, page_size=None, filter=None):
         """ get reservations
