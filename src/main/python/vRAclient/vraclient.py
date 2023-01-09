@@ -369,7 +369,7 @@ class vRAclient(RESTclient):
         return api_output
     
     
-    def get_vmdetails(self, access_token, hostname, ID):
+    def get_vmdetails_hostname(self, access_token, hostname, ID):
         url = 'https://{}/iaas/api/machines?$filter=name eq {}'.format(hostname ,ID)
         headers = {
                 'accept': "application/json",
