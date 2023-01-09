@@ -253,6 +253,27 @@ class vRAclient(RESTclient):
             result.extend(data)
         logger.debug('retrieved total of {} resources from "{}"'.format(len(result), api_endpoint))
         return result
+    
+    def get_resources_deploymentsapi(self, page_size=None, filter=None):
+        deployments_endpoint = "/deployment/api/deployments"
+        limit_p = "limit={}".format(page_size if page_size else 1000)
+        orderby_p = "orderby=dateCreated"
+        deployments_url = "{}?{}&${}".format(deployments_endpoint, limit_p, orderby_p)
+
+        if filter:
+            filter_p = 'filter={}'.format(filter)
+            deployments_url = '{}&${}'.format(deployments_url, filter_p)
+
+        if page_size:
+            logger.debug('retrieving paged resources from "{}"'.format(deployments_url))
+            return self.get_page(deployments_url)
+
+        logger.debug('retrieving all resources from "{}"'.format(deployments_url))
+        result = []
+        for data in self.get_page(deployments_url):
+            result.extend(data)
+        logger.debug('retrieved total of {} resources from "{}"'.format(len(result), deployments_url))
+        return result
 
     def get_reservations(self, page_size=None, filter=None):
         """ get reservations
