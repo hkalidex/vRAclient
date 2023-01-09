@@ -367,6 +367,17 @@ class vRAclient(RESTclient):
          }
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
         return api_output
+    
+    
+    def get_vmdetails(self, access_token, hostname, ID):
+        url = 'https://{}/iaas/api/machines?$filter=name eq {}'.format(hostname ,ID)
+        headers = {
+                'accept': "application/json",
+                'authorization': access_token
+         }
+        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
+        return api_output
+    
                                       
     def extend_lease_action(self, server_name=None, days=180, wait_for_request=True):
         """ extend lease by days for server_name
