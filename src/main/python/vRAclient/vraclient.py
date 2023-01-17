@@ -380,7 +380,7 @@ class vRAclient(RESTclient):
     
     
     def get_vmdetails_deployment(self, access_token, hostname, ID):
-        url = 'https://{}/deployment/api/deployments?search=deployments_{}'.format(hostname ,ID)
+        url = 'https://{}/deployment/api/deployments?filter=name eq {}'.format(hostname ,ID)
         headers = {
                 'accept': "application/json",
                 'authorization': access_token
