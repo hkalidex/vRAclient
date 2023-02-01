@@ -13,10 +13,10 @@ logger = logging.getLogger(__name__)
 logging.getLogger('urllib3.connectionpool').setLevel(logging.CRITICAL)
 
 
-VRA_HOST = 'vradev.fms07vraapp101.fm.intel.com'
-VRA_TENANT = 'VRADEV' 
-
-
+# VRA_HOST = 'vradev.fms07vraapp101.fm.intel.com'
+# VRA_TENANT = 'VRADEV' 
+VRA_HOST = 'it.vra.icloud.intel.com'
+VRA_TENANT = 'IT'
 class ResourceNotFound(Exception):
     """ ResourceNotFound
     """
