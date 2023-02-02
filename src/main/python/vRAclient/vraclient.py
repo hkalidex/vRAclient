@@ -2,7 +2,6 @@ import os
 import json
 from time import sleep
 from datetime import datetime
-from datetime import timedelta
 import requests
 from retrying import retry
 from RESTclient import RESTclient
@@ -276,7 +275,7 @@ class vRAclient(RESTclient):
         return result
     
     def get_resources_deploymentsapi_new(self, access_token, hostname):
-        url = "https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&size=200".format(hostname)
+        url = "https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&size=10000".format(hostname)
         headers = {
                 'accept': 'application/json',
                 'authorization': access_token
