@@ -275,13 +275,27 @@ class vRAclient(RESTclient):
         return result
     
     def get_resources_deploymentsapi_new(self, access_token, hostname):
-        url = "https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&size=10000".format(hostname)
+        records = []
+        url = "https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&size=200".format(hostname)
         headers = {
                 'accept': 'application/json',
                 'authorization': access_token
         }
-        api_output = requests.request("GET", url, headers=headers, verify=RESTclient.cabundle).json()['content']
-        return api_output
+        api_output = requests.request("GET", url, headers=headers, verify=RESTclient.cabundle).json()
+        count = 0
+        Totalpages =  api_output['totalPages']
+        while count < Totalpages :
+            num = count * 200
+            url = 'https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&$top=200&$skip={}'.format(hostname ,num)
+            headers = {
+                'accept': 'application/json',
+                'authorization': access_token
+            }
+           
+            record = requests.request("GET",url, headers=headers, verify='/etc/ssl/certs/cabundle.pem').json()['content']
+            count += 1
+           records.append(record)        
+        return records
 
     def get_resources_deploymentsapi_details_new(self, access_token, hostname, ID):
         url = "https://{}/deployment/api/deployments".format(hostname, ID)
