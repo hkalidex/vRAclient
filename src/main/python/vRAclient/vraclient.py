@@ -275,7 +275,7 @@ class vRAclient(RESTclient):
         return result
     
     def get_resources_deploymentsapi_new(self, access_token, hostname):
-        url = "https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&size=200".format(hostname)
+        url = "https://{}/deployment/api/deployments?resourceTypes=Cloud.vSphere.Machine&size=20".format(hostname)
         headers = {
                 'accept': 'application/json',
                 'authorization': access_token
