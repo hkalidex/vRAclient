@@ -294,7 +294,7 @@ class vRAclient(RESTclient):
            
             record = requests.request("GET",url, headers=headers, verify='/etc/ssl/certs/cabundle.pem').json()['content']
             count += 1
-           records.append(record)        
+            records.append(record)        
         return records
 
     def get_resources_deploymentsapi_details_new(self, access_token, hostname, ID):
