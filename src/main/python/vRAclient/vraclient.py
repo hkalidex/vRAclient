@@ -342,7 +342,7 @@ class vRAclient(RESTclient):
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
         return api_output
     def get_reservations_new(self, access_token, hostname):
-        url = 'https://{}/policy/api/policies?search=Resource Quota'.format(hostname)
+        url = 'https://{}/policy/api/policies?search=Resource Quota&size=200'.format(hostname)
         headers = {
                 'accept': "application/json",
                 'authorization': access_token
