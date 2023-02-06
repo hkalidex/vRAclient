@@ -334,7 +334,7 @@ class vRAclient(RESTclient):
         logger.debug('retrieved total of {} subtenants from "{}"'.format(len(result), api_endpoint))
         return result
     def get_subtenants_new(self, access_token, hostname):
-        url = 'https://{}/iaas/api/projects'.format(hostname)
+        url = 'https://{}/iaas/api/projects?size=10000'.format(hostname)
         headers = {
                 'accept': "application/json",
                 'authorization': access_token
