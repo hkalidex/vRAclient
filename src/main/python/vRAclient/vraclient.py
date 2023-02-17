@@ -385,7 +385,7 @@ class vRAclient(RESTclient):
                 'accept': "application/json",
                 'authorization': access_token
          }
-        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
+        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()
         if not api_output:
             return None
         else:
