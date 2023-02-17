@@ -394,7 +394,10 @@ class vRAclient(RESTclient):
                 'authorization': access_token
          }
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
-        return api_output
+        if not api_output:
+            return None
+        else:
+            return api_output
     
                                       
     def extend_lease_action(self, server_name=None, days=180, wait_for_request=True):
