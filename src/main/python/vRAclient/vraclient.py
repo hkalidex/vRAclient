@@ -367,6 +367,15 @@ class vRAclient(RESTclient):
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()
         return api_output
     
+    def get_vmdetails_name(self, access_token, hostname,num ):
+        url = 'https://{}/iaas/api/machines?&$top=100&$skip={}'.format(hostname,num)
+        headers = {
+                'accept': "application/json",
+                'authorization': access_token
+         }
+        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
+        return api_output
+    
     
     def get_vmdetails_hostname(self, access_token, hostname, ID):
         url = 'https://{}/iaas/api/machines?$filter=name eq {}'.format(hostname ,ID)
