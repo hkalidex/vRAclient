@@ -384,8 +384,11 @@ class vRAclient(RESTclient):
                 'authorization': access_token
          }
         api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
-        return api_output
-    
+        if not api_output:
+            return None
+        else:
+            return api_output
+        
     
     def get_vmdetails_deployment(self, access_token, hostname, ID):
         url = 'https://{}/deployment/api/deployments?search=deployments_{}'.format(hostname ,ID)
