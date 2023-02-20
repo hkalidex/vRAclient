@@ -347,7 +347,7 @@ class vRAclient(RESTclient):
                 'accept': "application/json",
                 'authorization': access_token
          }
-        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()['content']
+        api_output = requests.request("GET",url, headers=headers,  verify=RESTclient.cabundle).json()
         return api_output
     
     def get_reservations_new_page(self, access_token, hostname,num):
